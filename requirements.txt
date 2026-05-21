@@ -1,0 +1,5 @@
+fastapi>=0.115.0
+pymupdf>=1.25.0
+requests>=2.32.0
+uvicorn>=0.34.0
+pillow>=11.0.0
