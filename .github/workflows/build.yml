@@ -31,3 +31,15 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+      # Tells the customer's Azure App Service to pull the new image.
+      # Secret is the Deployment Center webhook URL (contains credentials).
+      - name: Notify Azure App Service
+        env:
+          WEBHOOK_URL: ${{ secrets.AZURE_REGISTRY_WEBHOOK }}
+        run: |
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "No webhook configured, skipping."
+            exit 0
+          fi
+          curl -fsS -X POST "$WEBHOOK_URL"
