@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libreoffice libreoffice-writer libreoffice-calc libreoffice-impress \
-    default-jre fonts-liberation fonts-dejavu \
+    default-jre fonts-liberation fonts-dejavu fonts-crosextra-carlito fonts-crosextra-caladea \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

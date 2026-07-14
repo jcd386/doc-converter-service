@@ -183,7 +183,7 @@ def _merge_pdfs(pdf_list: list[bytes], output_filename: str) -> bytes:
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "version": "1.1.0"}
 
 
 @app.post("/convert")
